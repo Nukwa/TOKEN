@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Vérification d'email - TOKEN</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .header .icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .status-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+        }
+        
+        .status-icon.loading {
+            background: #f0f0f0;
+        }
+        
+        .status-icon.success {
+            background: #d4edda;
+            color: #28a745;
+        }
+        
+        .status-icon.error {
+            background: #f8d7da;
+            color: #dc3545;
+        }
+        
+        .status-icon.info {
+            background: #d1ecf1;
+            color: #17a2b8;
+        }
+        
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .message {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <div class="header">
+            <div class="icon">🚌</div>
+            <h1>TOKEN</h1>
+            <p>Vérification d'email</p>
+        </div>
+        <div class="content" id="content">
+            <div class="status-icon loading" id="statusIcon">⏳</div>
+            <div class="title" id="title">Vérification en cours...</div>
+            <div class="message" id="message">Veuillez patienter pendant que nous vérifions votre email.</div>
+            <div id="buttonContainer"></div>
+        </div>
+        <div class="footer">
+            <p>© 2024 TOKEN. Tous droits réservés.</p>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE_URL = 'https://vmcmsrv1.francecentral.cloudapp.azure.com:10010/api/v1';
+        
+        // Récupérer le token depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        
+        console.log('🔍 [Page] URL complète:', window.location.href);
+        console.log('🔍 [Page] Token récupéré:', token);
+        console.log('🔍 [Page] Token length:', token?.length);
+        
+        // Éléments DOM
+        const statusIcon = document.getElementById('statusIcon');
+        const titleEl = document.getElementById('title');
+        const messageEl = document.getElementById('message');
+        const buttonContainer = document.getElementById('buttonContainer');
+        
+        function updateUI(status, title, message, button = null) {
+            statusIcon.className = 'status-icon ' + status;
+            
+            switch(status) {
+                case 'success':
+                    statusIcon.innerHTML = '✅';
+                    break;
+                case 'error':
+                    statusIcon.innerHTML = '❌';
+                    break;
+                case 'info':
+                    statusIcon.innerHTML = 'ℹ️';
+                    break;
+                default:
+                    statusIcon.innerHTML = '⏳';
+            }
+            
+            titleEl.textContent = title;
+            messageEl.textContent = message;
+            
+            if (button) {
+                buttonContainer.innerHTML = button;
+            } else {
+                buttonContainer.innerHTML = '';
+            }
+        }
+        
+        function redirectToApp() {
+            window.location.href = 'TOKEN://verify-email?token=' + token;
+            setTimeout(() => {
+                updateUI(
+                    'info',
+                    'Redirection automatique',
+                    'Si l\'application ne s\'ouvre pas automatiquement, veuillez ouvrir Dealing Pay manuellement.',
+                    '<a href="#" class="button" onclick="window.location.href=\'DealingPay://\'">Ouvrir l\'application</a>'
+                );
+            }, 2000);
+        }
+        
+        async function resendVerification() {
+            const email = localStorage.getItem('pending_verification_email');
+            
+            if (!email) {
+                updateUI(
+                    'info',
+                    'Email non trouvé',
+                    'Veuillez vous reconnecter pour renvoyer un email de vérification.',
+                    '<button onclick="redirectToLogin()" class="button">Se connecter</button>'
+                );
+                return;
+            }
+            
+            updateUI('loading', 'Envoi en cours...', 'Veuillez patienter...');
+            
+            try {
+                console.log('📡 [Page] Envoi requête resend pour:', email);
+                const response = await fetch(`${API_BASE_URL}/auth/resend-verification`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const data = await response.json();
+                console.log('📡 [Page] Réponse resend:', data);
+                
+                if (data.success) {
+                    updateUI(
+                        'success',
+                        'Email renvoyé !',
+                        'Un nouvel email de vérification a été envoyé. Vérifiez votre boîte de réception.',
+                        '<button onclick="window.location.reload()" class="button">OK</button>'
+                    );
+                } else {
+                    updateUI(
+                        'error',
+                        'Erreur',
+                        data.message || 'Impossible de renvoyer l\'email.',
+                        '<button onclick="redirectToLogin()" class="button">Se connecter</button>'
+                    );
+                }
+            } catch (error) {
+                console.error('❌ [Page] Erreur resend:', error);
+                updateUI(
+                    'error',
+                    'Erreur réseau',
+                    'Impossible de contacter le serveur. Veuillez réessayer.',
+                    '<button onclick="resendVerification()" class="button">Réessayer</button>'
+                );
+            }
+        }
+        
+        function redirectToLogin() {
+            window.location.href = 'Dealing Pay://login';
+            setTimeout(() => {
+                updateUI(
+                    'info',
+                    'Connexion',
+                    'Veuillez vous connecter à l\'application Dealing Pay.',
+                    '<a href="#" class="button" onclick="window.location.href=\'Dealing pay://\'">Ouvrir l\'application</a>'
+                );
+            }, 2000);
+        }
+        
+        async function verifyEmail() {
+            if (!token) {
+                console.log('❌ [Page] Aucun token');
+                updateUI(
+                    'error',
+                    'Token manquant',
+                    'Aucun token de vérification trouvé. Vérifiez le lien dans votre email.',
+                    '<button onclick="redirectToLogin()" class="button">Se connecter</button>'
+                );
+                return;
+            }
+            
+            console.log('📡 [Page] Envoi requête verify avec token:', token);
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/auth/verify-email`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ token })
+                });
+                
+                console.log('📡 [Page] Status réponse:', response.status);
+                const data = await response.json();
+                console.log('📡 [Page] Données réponse:', data);
+                
+                if (data.success) {
+                    updateUI(
+                        'success',
+                        'Email vérifié avec succès ! 🎉',
+                        'Votre compte est maintenant actif. Vous pouvez vous connecter à l\'application Dealing pay.',
+                        '<button onclick="redirectToApp()" class="button">Ouvrir l\'application</button>'
+                    );
+                } else {
+                    updateUI(
+                        'error',
+                        'Échec de la vérification',
+                        data.message || 'Le lien de vérification est invalide ou a expiré.',
+                        '<button onclick="resendVerification()" class="button">Renvoyer l\'email</button>'
+                    );
+                }
+            } catch (error) {
+                console.error('❌ [Page] Erreur réseau:', error);
+                updateUI(
+                    'error',
+                    'Erreur de connexion',
+                    'Impossible de contacter le serveur. Vérifiez votre connexion internet.',
+                    '<button onclick="verifyEmail()" class="button">Réessayer</button>'
+                );
+            }
+        }
+        
+        // Stocker l'email pour renvoi ultérieur
+        const emailParam = urlParams.get('email');
+        if (emailParam) {
+            console.log('📧 [Page] Email stocké:', emailParam);
+            localStorage.setItem('pending_verification_email', emailParam);
+        }
+        
+        // Démarrer la vérification
+        verifyEmail();
+    </script>
+</body>
+</html>
