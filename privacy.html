@@ -1,0 +1,725 @@
+<!-- public/privacy.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de confidentialité - Dealing Pay</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1a2332;
+            line-height: 1.7;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a2332 0%, #2d3748 100%);
+            color: white;
+            padding: 40px 24px;
+            border-radius: 16px 16px 0 0;
+            margin-bottom: 0;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: #a0aec0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #3182CE;
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 12px;
+        }
+
+        .content {
+            background: white;
+            padding: 40px 32px;
+            border-radius: 0 0 16px 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a2332;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #EBF5FF;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-top: 24px;
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: 15px;
+            color: #4a5568;
+            margin-bottom: 14px;
+        }
+
+        ul {
+            margin: 12px 0 16px 24px;
+        }
+
+        ul li {
+            font-size: 15px;
+            color: #4a5568;
+            margin-bottom: 6px;
+        }
+
+        .highlight-box {
+            background: #EBF5FF;
+            border-left: 4px solid #3182CE;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 16px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+            font-size: 14px;
+            color: #2B6CB0;
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        table th {
+            background: #f0f4f8;
+            text-align: left;
+            padding: 12px 14px;
+            font-weight: 600;
+            color: #1a2332;
+            border: 1px solid #e2e8f0;
+        }
+
+        table td {
+            padding: 10px 14px;
+            border: 1px solid #e2e8f0;
+            color: #4a5568;
+        }
+
+        table tr:nth-child(even) {
+            background: #fafbfc;
+        }
+
+        .contact-block {
+            background: #f0f4f8;
+            border-radius: 10px;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+
+        .contact-block p {
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .contact-block .label {
+            font-weight: 600;
+            color: #1a2332;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 24px 0 8px;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 32px;
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: #a0aec0;
+            margin-bottom: 4px;
+        }
+
+        .footer a {
+            color: #3182CE;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 16px 12px;
+            }
+
+            .content {
+                padding: 24px 16px;
+            }
+
+            .header {
+                padding: 28px 16px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            table th,
+            table td {
+                padding: 8px 10px;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a202c;
+            }
+
+            .content {
+                background: #2d3748;
+            }
+
+            .header {
+                background: linear-gradient(135deg, #0d1117 0%, #1a2332 100%);
+            }
+
+            h2 {
+                color: #e2e8f0;
+                border-bottom-color: #4a5568;
+            }
+
+            h3 {
+                color: #e2e8f0;
+            }
+
+            p {
+                color: #cbd5e0;
+            }
+
+            ul li {
+                color: #cbd5e0;
+            }
+
+            .highlight-box {
+                background: #1a2a3a;
+                border-left-color: #63B3ED;
+            }
+
+            .highlight-box p {
+                color: #90CDF4;
+            }
+
+            table th {
+                background: #1a202c;
+                color: #e2e8f0;
+                border-color: #4a5568;
+            }
+
+            table td {
+                border-color: #4a5568;
+                color: #cbd5e0;
+            }
+
+            table tr:nth-child(even) {
+                background: #1a202c;
+            }
+
+            .contact-block {
+                background: #1a202c;
+            }
+
+            .contact-block .label {
+                color: #e2e8f0;
+            }
+
+            .footer {
+                border-top-color: #4a5568;
+            }
+
+            .footer p {
+                color: #4a5568;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ============================================================ -->
+        <!-- HEADER -->
+        <!-- ============================================================ -->
+
+        <div class="header">
+            <h1>🔒 Politique de confidentialité</h1>
+            <p>Dealing Pay — Protection de vos données personnelles</p>
+            <span class="badge">Dernière mise à jour : 22 Juillet 2026</span>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- CONTENU -->
+        <!-- ============================================================ -->
+
+        <div class="content">
+
+            <!-- 1. INTRODUCTION -->
+            <h2>1. Introduction</h2>
+            <p>
+                Bienvenue sur <strong>Dealing Pay</strong>, une application mobile de gestion de transactions en NOUK.
+                Nous attachons une grande importance à la protection de vos données personnelles et à votre vie privée.
+            </p>
+            <p>
+                Cette politique de confidentialité explique comment nous collectons, utilisons, stockons et protégeons
+                vos informations lorsque vous utilisez notre application.
+            </p>
+            <p>
+                <strong>Pour toute question :</strong> <a href="mailto:contact@dealing-group.com">contact@dealing-group.com</a>
+            </p>
+
+            <!-- 2. INFORMATIONS COLLECTÉES -->
+            <h2>2. Informations que nous collectons</h2>
+
+            <h3>2.1. Informations que vous nous fournissez</h3>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Exemples</th>
+                            <th>Finalité</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Données d'identification</strong></td>
+                            <td>Nom, prénom, email, téléphone</td>
+                            <td>Création du compte, authentification</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mot de passe</strong></td>
+                            <td>Mot de passe crypté (bcrypt)</td>
+                            <td>Sécurisation de votre compte</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Photo de profil</strong></td>
+                            <td>Image téléchargée</td>
+                            <td>Personnalisation du profil</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Données de paiement</strong></td>
+                            <td>Adresse wallet NOUK</td>
+                            <td>Réalisation des transactions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contacts</strong></td>
+                            <td>Numéros de bénéficiaires</td>
+                            <td>Facilitation des transferts</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>2.2. Informations collectées automatiquement</h3>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Exemples</th>
+                            <th>Finalité</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Données de connexion</strong></td>
+                            <td>Adresse IP, horodatage</td>
+                            <td>Sécurité, journalisation</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Données d'utilisation</strong></td>
+                            <td>Pages consultées, actions</td>
+                            <td>Amélioration de l'application</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Données de l'appareil</strong></td>
+                            <td>Modèle, système d'exploitation</td>
+                            <td>Compatibilité, support</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Token de notification</strong></td>
+                            <td>Expo Push Token</td>
+                            <td>Envoi de notifications push</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>2.3. Données blockchain</h3>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Exemples</th>
+                            <th>Finalité</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Adresse wallet</strong></td>
+                            <td>Adresse publique NOUK</td>
+                            <td>Réception et envoi de fonds</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Transactions</strong></td>
+                            <td>Montants, dates, hash</td>
+                            <td>Historique des transactions</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contrats</strong></td>
+                            <td>Détails des contrats</td>
+                            <td>Gestion des contrats</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 3. UTILISATION DES DONNÉES -->
+            <h2>3. Comment nous utilisons vos données</h2>
+
+            <h3>3.1. Finalités principales</h3>
+            <ul>
+                <li><strong>Authentification et sécurité :</strong> Vérification de votre identité, protection de votre compte</li>
+                <li><strong>Exécution des transactions :</strong> Transferts NOUK, gestion des contrats</li>
+                <li><strong>Communication :</strong> Envoi de notifications, emails, SMS</li>
+                <li><strong>Support client :</strong> Assistance, résolution de problèmes</li>
+                <li><strong>Amélioration du service :</strong> Analyse d'utilisation, optimisation</li>
+                <li><strong>Conformité légale :</strong> Respect des obligations réglementaires</li>
+            </ul>
+
+            <h3>3.2. Utilisation des notifications</h3>
+            <p>Nous utilisons vos données pour vous envoyer :</p>
+            <ul>
+                <li><strong>Notifications In-App :</strong> Alertes de transactions, contrats</li>
+                <li><strong>Emails :</strong> Confirmations, vérifications, réinitialisation</li>
+                <li><strong>SMS :</strong> Alertes importantes (via Termii)</li>
+                <li><strong>Notifications push :</strong> Alertes en temps réel</li>
+            </ul>
+            <p>Vous pouvez gérer vos préférences de notification dans l'application.</p>
+
+            <!-- 4. PARTAGE DES DONNÉES -->
+            <h2>4. Partage des données</h2>
+
+            <h3>4.1. Avec des tiers</h3>
+            <p>Nous ne vendons pas vos données à des tiers. Nous partageons uniquement :</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Partenaire</th>
+                            <th>Données partagées</th>
+                            <th>Finalité</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Resend</strong></td>
+                            <td>Email</td>
+                            <td>Envoi d'emails transactionnels</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Termii</strong></td>
+                            <td>Numéro de téléphone</td>
+                            <td>Envoi de SMS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Expo</strong></td>
+                            <td>Token de notification</td>
+                            <td>Notifications push</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Microsoft Azure</strong></td>
+                            <td>Données chiffrées</td>
+                            <td>Stockage sécurisé</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>4.2. Obligations légales</h3>
+            <p>Nous pouvons divulguer vos données si :</p>
+            <ul>
+                <li>📋 La loi l'exige</li>
+                <li>🏛️ Une autorité judiciaire le demande</li>
+                <li>🔒 Pour protéger nos droits ou notre sécurité</li>
+            </ul>
+
+            <!-- 5. STOCKAGE ET SÉCURITÉ -->
+            <h2>5. Stockage et sécurité</h2>
+
+            <h3>5.1. Où sont stockées vos données ?</h3>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Données</th>
+                            <th>Lieu de stockage</th>
+                            <th>Sécurité</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Compte utilisateur</strong></td>
+                            <td>PostgreSQL (Azure)</td>
+                            <td>Chiffré au repos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mots de passe</strong></td>
+                            <td>Hash bcrypt</td>
+                            <td>Irréversibles</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Transactions</strong></td>
+                            <td>Blockchain + Base de données</td>
+                            <td>Chiffrées</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tokens JWT</strong></td>
+                            <td>Appareil (AsyncStorage)</td>
+                            <td>Signés cryptographiquement</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>5.2. Mesures de sécurité</h3>
+            <ul>
+                <li>✅ <strong>Chiffrement des données</strong> en transit (HTTPS) et au repos</li>
+                <li>✅ <strong>Mots de passe hachés</strong> (bcrypt, sel unique)</li>
+                <li>✅ <strong>Authentification</strong> par JWT avec expiration</li>
+                <li>✅ <strong>Contrôle d'accès</strong> basé sur les rôles</li>
+                <li>✅ <strong>Logs d'audit</strong> pour les actions sensibles</li>
+                <li>✅ <strong>HTTPS</strong> pour toutes les communications</li>
+            </ul>
+
+            <!-- 6. VOS DROITS -->
+            <h2>6. Vos droits</h2>
+
+            <h3>6.1. Droits applicables (RGPD)</h3>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Droit</th>
+                            <th>Description</th>
+                            <th>Comment l'exercer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Accès</strong></td>
+                            <td>Voir vos données personnelles</td>
+                            <td>Application > Profil</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rectification</strong></td>
+                            <td>Corriger vos données</td>
+                            <td>Application > Profil > Modifier</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Suppression</strong></td>
+                            <td>Supprimer votre compte</td>
+                            <td>Application > Profil > Supprimer</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Opposition</strong></td>
+                            <td>Refuser l'utilisation de vos données</td>
+                            <td>Contactez-nous</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Portabilité</strong></td>
+                            <td>Exporter vos données</td>
+                            <td>Contactez-nous</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>6.2. Comment exercer vos droits</h3>
+            <ul>
+                <li><strong>Via l'application :</strong> Profil > Paramètres</li>
+                <li><strong>Par email :</strong> <a href="mailto:contact@dealing-group.com">contact@dealing-group.com</a></li>
+                <li><strong>Par courrier :</strong> Dealing Pay, Douala, Cameroun</li>
+            </ul>
+            <p>Nous répondrons à votre demande sous <strong>30 jours</strong> maximum.</p>
+
+            <!-- 7. COOKIES -->
+            <h2>7. Cookies et traceurs</h2>
+            <p>Nous n'utilisons pas de cookies sur l'application mobile. Nous utilisons :</p>
+            <ul>
+                <li>📊 <strong>Analytics :</strong> Données d'utilisation anonymisées</li>
+                <li>📱 <strong>Stockage local :</strong> Préférences, session</li>
+                <li>🔄 <strong>Cache :</strong> Optimisation des performances</li>
+            </ul>
+
+            <!-- 8. MINEURS -->
+            <h2>8. Données des mineurs</h2>
+            <ul>
+                <li>👶 <strong>Age minimum :</strong> 13 ans</li>
+                <li>👨‍👩‍👧 <strong>Autorisation parentale :</strong> Requise pour les moins de 18 ans</li>
+                <li>❌ <strong>Collecte :</strong> Nous ne collectons pas sciemment les données des mineurs</li>
+            </ul>
+            <p>Si nous découvrons des données d'un mineur sans consentement, nous les supprimerons immédiatement.</p>
+
+            <!-- 9. CONSERVATION -->
+            <h2>9. Conservation des données</h2>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Données</th>
+                            <th>Durée de conservation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Compte utilisateur</strong></td>
+                            <td>Jusqu'à suppression du compte</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Transactions</strong></td>
+                            <td>10 ans (obligation légale)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Logs d'audit</strong></td>
+                            <td>1 an</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Notifications</strong></td>
+                            <td>30 jours</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cache local</strong></td>
+                            <td>Jusqu'à vidage du cache</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 10. CONTACT -->
+            <h2>10. Nous contacter</h2>
+
+            <div class="contact-block">
+                <p><span class="label">📧 Email :</span> <a href="mailto:contact@dealing-group.com">contact@dealing-group.com</a></p>
+                <p><span class="label">📱 Application :</span> Profil > Support</p>
+                <p><span class="label">🌐 Site Web :</span> <a href="https://dealing-group.com/">https://dealing-group.com/privacy</a></p>
+            </div>
+
+            <!-- 11. DPO -->
+            <h2>11. Responsable de la protection des données (DPO)</h2>
+            <div class="contact-block">
+                <p><span class="label">Dealing Pay</span></p>
+                <p><span class="label">Email :</span> <a href="mailto:phenich@dealing-group.com">phenich@dealing-group.com</a></p>
+                <p><span class="label">Adresse :</span> Yaounde, Cameroun</p>
+            </div>
+
+            <!-- 12. MODIFICATIONS -->
+            <h2>12. Modifications de la politique</h2>
+            <ul>
+                <li>📅 Nous mettons à jour cette politique régulièrement</li>
+                <li>🔔 Vous serez notifié en cas de changement majeur</li>
+                <li>📧 La version actuelle est disponible dans l'application</li>
+            </ul>
+
+            <!-- 13. CONSENTEMENT -->
+            <h2>13. Consentement</h2>
+            <p>
+                En utilisant Dealing Pay, vous acceptez cette politique de confidentialité.
+                Vous pouvez retirer votre consentement à tout moment en supprimant votre compte.
+            </p>
+
+            <!-- 14. RÉCLAMATIONS -->
+            <h2>14. Réclamations</h2>
+            <p>Si vous estimez que vos droits ne sont pas respectés :</p>
+            <ol>
+                <li><strong>Contactez-nous :</strong> <a href="mailto:phenich@dealing-group.com">phenich@dealing-group.com</a></li>
+                <li><strong>Autorité de contrôle :</strong> ANTIC (si applicable)</li>
+            </ol>
+
+            <!-- 15. TRANSFERTS INTERNATIONAUX -->
+            <h2>15. Transferts internationaux</h2>
+            <p>Vos données peuvent être stockées sur des serveurs situés en :</p>
+            <ul>
+                <li>🇫🇷 <strong>France</strong> (Azure France Central)</li>
+                <li>🇪🇺 <strong>Union Européenne</strong> (conformité RGPD)</li>
+            </ul>
+            <p>Tous les transferts sont encadrés par des <strong>clauses contractuelles types</strong> (SCC).</p>
+
+            <!-- ============================================================ -->
+            <!-- FOOTER -->
+            <!-- ============================================================ -->
+
+            <div class="footer">
+                <p>© 2026 Dealing Pay. Tous droits réservés.</p>
+                <p>
+                    <a href="mailto:phenich@dealing-group.com">Contact</a> •
+                    <a href="https://dealing-group.com">Site Web</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
